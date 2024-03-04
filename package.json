@@ -1,6 +1,6 @@
 {
   "name": "@mercuryworkshop/epoxy-transport",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "a bare transport that implements end-to-end encryption with epoxy-tls and wisp",
   "main": "./dist/index.mjs",
   "keywords": [],
@@ -29,7 +29,8 @@
         "require": "./dist/index.cjs"
       },
       "node": {
-        "require": "./lib/index.cjs"
+        "require": "./lib/index.cjs",
+        "import": "./lib/index.cjs"
       }
     }
   }

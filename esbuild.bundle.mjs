@@ -75,7 +75,7 @@ build({
   bundle: true,
   format: "esm",
   entryPoints: [`./src/main.ts`],
-  outfile: `./dist/index.mjs`,
+  outfile: `./dist/module.js`,
   plugins: [wasmPlugin],
   external: ["fs", "ws", "path"],
 })
@@ -84,7 +84,7 @@ build({
   bundle: true,
   format: "cjs",
   entryPoints: [`./src/main.ts`],
-  outfile: `./dist/index.cjs`,
+  outfile: `./dist/index.js`,
   external: ["fs", "ws", "path"],
   plugins: [wasmPlugin, umdWrapper(umdWrapperOptions)]
   // plugins: [dtsPlugin({
