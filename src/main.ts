@@ -26,14 +26,19 @@ export class EpoxyClient implements BareTransport {
   ): Promise<TransferrableResponse> {
     if (body instanceof Blob)
       body = await body.arrayBuffer();
-    let payload = await this.epxclient.fetch(remote.href, { method, body, headers, redirect: "manual" });
 
-    return {
-      body: payload.body!,
-      headers: (payload as any).rawHeaders,
-      status: payload.status,
-      statusText: payload.statusText,
-    };
+    try {
+      let payload = await this.epxclient.fetch(remote.href, { method, body, headers, redirect: "manual" });
+      return {
+        body: payload.body!,
+        headers: (payload as any).rawHeaders,
+        status: payload.status,
+        statusText: payload.statusText,
+      };
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   }
 
   connect(
