@@ -62,7 +62,11 @@ export class EpoxyClient implements BareTransport {
     );
 
     return async (data) => {
-      (await epsocket).send(data);
+      if (typeof data === 'string') {
+        (await epsocket).send_text(data);
+      } else {
+        (await epsocket).send_binary(data);
+      }
     };
   }
 }
