@@ -6,7 +6,6 @@
   "keywords": [],
   "author": "",
   "type": "module",
-  "license": "LGPL",
   "scripts": {
     "build": "node esbuild.bundle.mjs"
   },
