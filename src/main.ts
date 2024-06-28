@@ -1,5 +1,6 @@
 import { BareHeaders, BareResponse, TransferrableResponse, type BareTransport } from "@mercuryworkshop/bare-mux";
 import epoxy from "@mercuryworkshop/epoxy-tls";
+import ROOTS from "@mercuryworkshop/epoxy-tls/pkg/certs-module"
 export class EpoxyClient implements BareTransport {
   canstart = true;
   epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
@@ -8,9 +9,12 @@ export class EpoxyClient implements BareTransport {
   constructor({ wisp }) {
     this.wisp = wisp;
   }
-  async init() {
-    let { EpoxyClient } = await epoxy();
-    this.epxclient = await new EpoxyClient(this.wisp, navigator.userAgent, 10);
+  async init() {  
+    const { EpoxyClient, EpoxyClientOptions } = await epoxy();
+
+    let options = new EpoxyClientOptions();
+	  options.user_agent = navigator.userAgent;
+    this.epxclient = await new EpoxyClient(this.wisp, ROOTS, options);
 
     this.ready = true;
   }
@@ -62,11 +66,7 @@ export class EpoxyClient implements BareTransport {
     );
 
     return async (data) => {
-      if (typeof data === 'string') {
-        (await epsocket).send_text(data);
-      } else {
-        (await epsocket).send_binary(data);
-      }
-    };
+        await epsocket.send(data);
+    }
   }
 }
