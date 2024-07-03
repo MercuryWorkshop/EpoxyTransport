@@ -69,7 +69,7 @@ export class EpoxyClient implements BareTransport {
 			handlers,
 			url.href,
 			protocols,
-			Object.assign({ "Origin": origin }, requestHeaders)
+			{ "Origin": origin }
 		);
 
 		return [ 
