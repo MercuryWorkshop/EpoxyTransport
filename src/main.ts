@@ -68,15 +68,16 @@ export class EpoxyClient implements BareTransport {
 		let epsocket = this.epxclient.connect_websocket(
 			handlers,
 			url.href,
-			protocols
+			protocols,
+			Object.assign({ "Origin": origin }, requestHeaders)
 		);
 
 		return [ 
 			async (data) => {
-				await epsocket.send(data);
+				(await epsocket).send(data);
 			},
 			async (code, reason) => {
-				epsocket.close()
+				(await epsocket).close(close, reason)
 			}
 		]
 	}
