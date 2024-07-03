@@ -6,17 +6,19 @@ export class EpoxyClient implements BareTransport {
 	canstart = true;
 	epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
 	wisp: string;
+	EpoxyHandlers: Awaited<ReturnType<any>>["EpoxyHandlers"]["prototype"] = null!;
 
 	constructor({ wisp }) {
 		this.wisp = wisp;
 	}
 	async init() {
-		const { EpoxyClient, EpoxyClientOptions } = await epoxy();
+		const { EpoxyClient, EpoxyClientOptions, EpoxyHandlers } = await epoxy();
 
 		let options = new EpoxyClientOptions();
 		options.user_agent = navigator.userAgent;
 		options.udp_extension_required = false;
 		this.epxclient = await new EpoxyClient(this.wisp, ROOTS, options);
+		this.EpoxyHandlers = EpoxyHandlers;
 
 		this.ready = true;
 	}
@@ -56,19 +58,26 @@ export class EpoxyClient implements BareTransport {
 		onmessage: (data: Blob | ArrayBuffer | string) => void,
 		onclose: (code: number, reason: string) => void,
 		onerror: (error: string) => void,
-	): (data: Blob | ArrayBuffer | string) => void {
-		let epsocket = this.epxclient.connect_ws(
+	): [ (data: Blob | ArrayBuffer | string) => void, (code: number, reason: string) => void ] {
+		let handlers = new this.EpoxyHandlers(
 			onopen,
 			onclose,
 			onerror,
-			(data: Uint8Array | string) => data instanceof Uint8Array ? onmessage(data.buffer) : onmessage(data),
+			(data: Uint8Array | string) => data instanceof Uint8Array ? onmessage(data.buffer) : onmessage(data)
+		);
+		let epsocket = this.epxclient.connect_websocket(
+			handlers,
 			url.href,
-			protocols,
-			origin,
+			protocols
 		);
 
-		return async (data) => {
-			await epsocket.send(data);
-		}
+		return [ 
+			async (data) => {
+				await epsocket.send(data);
+			},
+			async (code, reason) => {
+				epsocket.close()
+			}
+		]
 	}
 }
