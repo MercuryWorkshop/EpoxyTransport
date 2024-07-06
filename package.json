@@ -32,7 +32,10 @@
 			"node": {
 				"require": "./lib/index.cjs",
 				"import": "./lib/index.cjs"
-			}
+			},
+      "default": {
+        "types": "./lib/index.d.ts"
+      }
 		}
 	}
 }
