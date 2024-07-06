@@ -6,18 +6,23 @@ export class EpoxyClient implements BareTransport {
 	canstart = true;
 	epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
 	wisp: string;
+	wisp_v2: boolean;
+	udp_extension_required: boolean;
 	EpoxyHandlers: Awaited<ReturnType<any>>["EpoxyHandlers"]["prototype"] = null!;
 
-	constructor({ wisp }) {
+	constructor({ wisp, wisp_v2, udp_extension_required }) {
 		this.wisp = wisp;
+		this.wisp_v2 = wisp_v2 || true;
+		this.udp_extension_required = udp_extension_required || false;
 	}
 	async init() {
 		const { EpoxyClient, EpoxyClientOptions, EpoxyHandlers } = await epoxy();
 
 		let options = new EpoxyClientOptions();
 		options.user_agent = navigator.userAgent;
-		options.udp_extension_required = false;
-		this.epxclient = await new EpoxyClient(this.wisp, ROOTS, options);
+		options.udp_extension_required = this.udp_extension_required;
+		options.wisp_v2 = this.wisp_v2;
+		this.epxclient = new EpoxyClient(this.wisp, ROOTS, options);
 		this.EpoxyHandlers = EpoxyHandlers;
 
 		this.ready = true;
