@@ -2,7 +2,7 @@ import { BareHeaders, BareResponse, TransferrableResponse, type BareTransport } 
 import epoxy from "@mercuryworkshop/epoxy-tls";
 //@ts-expect-error typescript doesnt follow the npm exports for some reason
 import ROOTS from "@mercuryworkshop/epoxy-tls/certs"
-export class EpoxyClient implements BareTransport {
+export default class EpoxyClient implements BareTransport {
 	canstart = true;
 	epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
 	wisp: string;
