@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mercuryworkshop/epoxy-tls':
-        specifier: ^2.0.2-1
-        version: 2.0.2-1
+        specifier: ^2.0.4-1
+        version: 2.0.4-1
       esbuild-plugin-umd-wrapper:
         specifier: ^2.0.0
         version: 2.0.0
@@ -23,13 +23,10 @@ importers:
       rollup-plugin-typescript2:
         specifier: ^0.36.0
         version: 0.36.0(rollup@4.12.1)(typescript@5.3.3)
-      ws:
-        specifier: 8.17.1
-        version: 8.17.1
     devDependencies:
       '@mercuryworkshop/bare-mux':
-        specifier: ^1.1.4
-        version: 1.1.4
+        specifier: ^2.0.0
+        version: 2.0.0
       esbuild:
         specifier: ^0.19.11
         version: 0.19.12
@@ -177,11 +174,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@mercuryworkshop/bare-mux@1.1.4':
-    resolution: {integrity: sha512-mJPezqEpiKTCs+wu/3TowilnVXQgFs4SqoQnnbCbOc5cV6bDggaolKkyYjDnmOB9t/nptIIXDWDB31oS9vX9kA==}
+  '@mercuryworkshop/bare-mux@2.0.0':
+    resolution: {integrity: sha512-SKhWdP1T5QxPXHFxblc0vdXXrRF//e+Q2XsFY0G+EvKh8Md7UTLafZQcdOgM1KBpp9IybVKizIJMwnZoK5iMzg==}
 
-  '@mercuryworkshop/epoxy-tls@2.0.2-1':
-    resolution: {integrity: sha512-qaioHTxe/Uru6Rh7Moq61njf5VSrg9if35sLw2+Ws2N9rtORoLK9i+Of9b9uncxcjUmFdS8lIsoBBkqoQbYRHg==}
+  '@mercuryworkshop/epoxy-tls@2.0.4-1':
+    resolution: {integrity: sha512-tAln8V0Ct84WHL2hXnBibFNw3YhxJ9h2X4q83hgx7UNAOMrbs5qfibkeZVaH1TMVP4NUH9gu3YNk3KrLtSkjrg==}
 
   '@rollup/pluginutils@4.2.1':
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -260,9 +257,6 @@ packages:
 
   '@types/resolve@0.0.8':
     resolution: {integrity: sha512-auApPaJf3NPfe18hSoJkp8EbZzer2ISk7o8mCC3M9he/a04+gbMF97NkpD2S8riMGvm4BMRI59/SZQSaLTKpsQ==}
-
-  '@types/uuid@9.0.8':
-    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
   ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
@@ -444,22 +438,6 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
-  uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
-    hasBin: true
-
-  ws@8.17.1:
-    resolution: {integrity: sha512-6XQFvXTkbfUOZOKKILFG1PDK2NDQs4azKQl26T0YS5CxqWLgXajbPZ+h4gZekJyRqFU8pvnbAbbs/3TgRPy+GQ==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
@@ -534,12 +512,9 @@ snapshots:
   '@esbuild/win32-x64@0.19.12':
     optional: true
 
-  '@mercuryworkshop/bare-mux@1.1.4':
-    dependencies:
-      '@types/uuid': 9.0.8
-      uuid: 9.0.1
+  '@mercuryworkshop/bare-mux@2.0.0': {}
 
-  '@mercuryworkshop/epoxy-tls@2.0.2-1': {}
+  '@mercuryworkshop/epoxy-tls@2.0.4-1': {}
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
@@ -594,8 +569,6 @@ snapshots:
   '@types/resolve@0.0.8':
     dependencies:
       '@types/node': 20.11.25
-
-  '@types/uuid@9.0.8': {}
 
   ansi-styles@4.3.0:
     dependencies:
@@ -797,9 +770,5 @@ snapshots:
   undici-types@5.26.5: {}
 
   universalify@2.0.1: {}
-
-  uuid@9.0.1: {}
-
-  ws@8.17.1: {}
 
   yallist@4.0.0: {}

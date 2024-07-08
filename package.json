@@ -1,6 +1,6 @@
 {
 	"name": "@mercuryworkshop/epoxy-transport",
-	"version": "2.0.6",
+	"version": "2.1.0",
 	"description": "a bare transport that implements end-to-end encryption with epoxy-tls and wisp",
 	"main": "./dist/index.mjs",
 	"keywords": [],
@@ -12,14 +12,14 @@
 		"prepare": "npm run build"
 	},
 	"dependencies": {
-		"@mercuryworkshop/epoxy-tls": "^2.0.3-4",
+		"@mercuryworkshop/epoxy-tls": "^2.0.4-1",
 		"esbuild-plugin-umd-wrapper": "^2.0.0",
 		"rollup": "^4.12.0",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-typescript2": "^0.36.0"
 	},
 	"devDependencies": {
-		"@mercuryworkshop/bare-mux": "^1.1.4",
+		"@mercuryworkshop/bare-mux": "^2.0.0",
 		"esbuild": "^0.19.11",
 		"esbuild-plugin-d.ts": "^1.2.2"
 	},
