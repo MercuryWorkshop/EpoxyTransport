@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mercuryworkshop/epoxy-tls':
-        specifier: ^2.0.4-2
-        version: 2.0.4-2
+        specifier: ^2.0.6-1
+        version: 2.0.6-1
       esbuild-plugin-umd-wrapper:
         specifier: ^2.0.0
         version: 2.0.0
@@ -177,8 +177,8 @@ packages:
   '@mercuryworkshop/bare-mux@2.0.0':
     resolution: {integrity: sha512-SKhWdP1T5QxPXHFxblc0vdXXrRF//e+Q2XsFY0G+EvKh8Md7UTLafZQcdOgM1KBpp9IybVKizIJMwnZoK5iMzg==}
 
-  '@mercuryworkshop/epoxy-tls@2.0.4-2':
-    resolution: {integrity: sha512-I/lHt4Q49SB+p5yurQtND6HngqkIYucaA2iz5Yq/gamG+X6ZffqcheNHgNAT7/Hqyzqbm8aWpoHSbFQysfkw5A==}
+  '@mercuryworkshop/epoxy-tls@2.0.6-1':
+    resolution: {integrity: sha512-sirpgUiIO6gxjvoI+QDRebsWEgutHiMbV5ghx2Q39IkfGqYNFinaMIDZRno8yY4IZCxydf9KAo/V+1xEMwvJ+w==}
 
   '@rollup/pluginutils@4.2.1':
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -514,7 +514,7 @@ snapshots:
 
   '@mercuryworkshop/bare-mux@2.0.0': {}
 
-  '@mercuryworkshop/epoxy-tls@2.0.4-2': {}
+  '@mercuryworkshop/epoxy-tls@2.0.6-1': {}
 
   '@rollup/pluginutils@4.2.1':
     dependencies:
