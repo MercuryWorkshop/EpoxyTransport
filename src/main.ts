@@ -12,7 +12,7 @@ export default class EpoxyClient implements BareTransport {
 
 	constructor({ wisp, wisp_v2, udp_extension_required }) {
 		this.wisp = wisp;
-		this.wisp_v2 = wisp_v2 || true;
+		this.wisp_v2 = wisp_v2 || false;
 		this.udp_extension_required = udp_extension_required || false;
 	}
 	async init() {
