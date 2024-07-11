@@ -27,7 +27,7 @@
 		".": {
 			"browser": {
 				"import": "./dist/index.mjs",
-				"require": "./dist/index.cjs"
+				"require": "./dist/index.js"
 			},
 			"node": {
 				"require": "./lib/index.cjs",

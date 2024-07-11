@@ -75,7 +75,7 @@ build({
   bundle: true,
   format: "esm",
   entryPoints: [`./src/main.ts`],
-  outfile: `./dist/module.js`,
+  outfile: `./dist/index.mjs`,
   plugins: [wasmPlugin],
   external: ["fs", "ws", "path"],
 })

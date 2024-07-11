@@ -1,4 +1,4 @@
-import { BareHeaders, BareResponse, TransferrableResponse, type BareTransport } from "@mercuryworkshop/bare-mux";
+import type { BareHeaders, BareResponse, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
 import epoxy from "@mercuryworkshop/epoxy-tls";
 //@ts-expect-error typescript doesnt follow the npm exports for some reason
 import ROOTS from "@mercuryworkshop/epoxy-tls/certs"
