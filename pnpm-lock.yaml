@@ -25,8 +25,8 @@ importers:
         version: 0.36.0(rollup@4.12.1)(typescript@5.3.3)
     devDependencies:
       '@mercuryworkshop/bare-mux':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.1
+        version: 2.0.1
       esbuild:
         specifier: ^0.19.11
         version: 0.19.12
@@ -174,8 +174,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@mercuryworkshop/bare-mux@2.0.0':
-    resolution: {integrity: sha512-SKhWdP1T5QxPXHFxblc0vdXXrRF//e+Q2XsFY0G+EvKh8Md7UTLafZQcdOgM1KBpp9IybVKizIJMwnZoK5iMzg==}
+  '@mercuryworkshop/bare-mux@2.0.1':
+    resolution: {integrity: sha512-94YThllV9sWSb5hzIDg+U0JSNfFdkvOq6j5wwV1OON3izZhrKSsdDOkaywS5WP6HE/jm0/0ZYaYixbf8u3kjYg==}
 
   '@mercuryworkshop/epoxy-tls@2.0.6-1':
     resolution: {integrity: sha512-sirpgUiIO6gxjvoI+QDRebsWEgutHiMbV5ghx2Q39IkfGqYNFinaMIDZRno8yY4IZCxydf9KAo/V+1xEMwvJ+w==}
@@ -512,7 +512,7 @@ snapshots:
   '@esbuild/win32-x64@0.19.12':
     optional: true
 
-  '@mercuryworkshop/bare-mux@2.0.0': {}
+  '@mercuryworkshop/bare-mux@2.0.1': {}
 
   '@mercuryworkshop/epoxy-tls@2.0.6-1': {}
 

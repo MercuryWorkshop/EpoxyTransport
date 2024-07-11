@@ -19,7 +19,7 @@
 		"rollup-plugin-typescript2": "^0.36.0"
 	},
 	"devDependencies": {
-		"@mercuryworkshop/bare-mux": "^2.0.0",
+		"@mercuryworkshop/bare-mux": "^2.0.1",
 		"esbuild": "^0.19.11",
 		"esbuild-plugin-d.ts": "^1.2.2"
 	},
