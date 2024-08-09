@@ -1,4 +1,4 @@
-import type { BareHeaders, BareResponse, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
+import type { BareHeaders, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
 import epoxy from "@mercuryworkshop/epoxy-tls";
 export default class EpoxyClient implements BareTransport {
 	canstart = true;
