@@ -1,6 +1,6 @@
 import type { BareHeaders, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
-import epoxy from "@mercuryworkshop/epoxy-tls";
-export default class EpoxyClient implements BareTransport {
+import initEpoxy, { EpoxyClient, EpoxyClientOptions, EpoxyHandlers } from "@mercuryworkshop/epoxy-tls";
+export default class EpoxyTransport implements BareTransport {
 	canstart = true;
 	epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
 	wisp: string;
@@ -14,7 +14,7 @@ export default class EpoxyClient implements BareTransport {
 		this.udp_extension_required = udp_extension_required || false;
 	}
 	async init() {
-		const { EpoxyClient, EpoxyClientOptions, EpoxyHandlers } = await epoxy();
+		await initEpoxy();
 
 		let options = new EpoxyClientOptions();
 		options.user_agent = navigator.userAgent;
@@ -61,7 +61,7 @@ export default class EpoxyClient implements BareTransport {
 		onmessage: (data: Blob | ArrayBuffer | string) => void,
 		onclose: (code: number, reason: string) => void,
 		onerror: (error: string) => void,
-	): [ (data: Blob | ArrayBuffer | string) => void, (code: number, reason: string) => void ] {
+	): [(data: Blob | ArrayBuffer | string) => void, (code: number, reason: string) => void] {
 		let handlers = new this.EpoxyHandlers(
 			onopen,
 			onclose,
@@ -75,7 +75,7 @@ export default class EpoxyClient implements BareTransport {
 			{ "Origin": origin }
 		);
 
-		return [ 
+		return [
 			async (data) => {
 				(await epsocket).send(data);
 			},
