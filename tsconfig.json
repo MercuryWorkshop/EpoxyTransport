@@ -7,7 +7,7 @@
 		"strict": true,
 		"stripInternal": true,
 		"module": "ES6",
-		"moduleResolution": "node",
+		"moduleResolution": "Bundler",
 		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"noImplicitAny": false
