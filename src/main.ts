@@ -1,12 +1,17 @@
 import type { BareHeaders, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
-import initEpoxy, { EpoxyClient, EpoxyClientOptions, EpoxyHandlers } from "@mercuryworkshop/epoxy-tls";
+import initEpoxy, { EpoxyClient, EpoxyClientOptions, EpoxyHandlers, info } from "@mercuryworkshop/epoxy-tls";
+
+export { info as epoxyInfo };
+
 export default class EpoxyTransport implements BareTransport {
 	canstart = true;
-	epxclient: Awaited<ReturnType<any>>["EpoxyClient"]["prototype"] = null!;
+	ready = false;
+
+	client: EpoxyClient = null!;
+
 	wisp: string;
 	wisp_v2: boolean;
 	udp_extension_required: boolean;
-	EpoxyHandlers: Awaited<ReturnType<any>>["EpoxyHandlers"]["prototype"] = null!;
 
 	constructor({ wisp, wisp_v2, udp_extension_required }) {
 		this.wisp = wisp;
@@ -20,12 +25,10 @@ export default class EpoxyTransport implements BareTransport {
 		options.user_agent = navigator.userAgent;
 		options.udp_extension_required = this.udp_extension_required;
 		options.wisp_v2 = this.wisp_v2;
-		this.epxclient = new EpoxyClient(this.wisp, options);
-		this.EpoxyHandlers = EpoxyHandlers;
+		this.client = new EpoxyClient(this.wisp, options);
 
 		this.ready = true;
 	}
-	ready = false;
 	async meta() { }
 
 	async request(
@@ -39,12 +42,12 @@ export default class EpoxyTransport implements BareTransport {
 			body = await body.arrayBuffer();
 
 		try {
-			let payload = await this.epxclient.fetch(remote.href, { method, body, headers, redirect: "manual" });
+			let res = await this.client.fetch(remote.href, { method, body, headers, redirect: "manual" });
 			return {
-				body: payload.body!,
-				headers: (payload as any).rawHeaders,
-				status: payload.status,
-				statusText: payload.statusText,
+				body: res.body!,
+				headers: (res as any).rawHeaders,
+				status: res.status,
+				statusText: res.statusText,
 			};
 		} catch (err) {
 			console.error(err);
@@ -62,25 +65,25 @@ export default class EpoxyTransport implements BareTransport {
 		onclose: (code: number, reason: string) => void,
 		onerror: (error: string) => void,
 	): [(data: Blob | ArrayBuffer | string) => void, (code: number, reason: string) => void] {
-		let handlers = new this.EpoxyHandlers(
+		let handlers = new EpoxyHandlers(
 			onopen,
 			onclose,
 			onerror,
 			(data: Uint8Array | string) => data instanceof Uint8Array ? onmessage(data.buffer) : onmessage(data)
 		);
-		let epsocket = this.epxclient.connect_websocket(
+		let ws = this.client.connect_websocket(
 			handlers,
 			url.href,
 			protocols,
-			{ "Origin": origin }
+			Object.assign({ "Origin": origin }, requestHeaders)
 		);
 
 		return [
 			async (data) => {
-				(await epsocket).send(data);
+				(await ws).send(data);
 			},
 			async (code, reason) => {
-				(await epsocket).close(close, reason)
+				(await ws).close(code, reason || "")
 			}
 		]
 	}
