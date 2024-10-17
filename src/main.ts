@@ -12,11 +12,13 @@ export default class EpoxyTransport implements BareTransport {
 	wisp: string;
 	wisp_v2: boolean;
 	udp_extension_required: boolean;
+	title_case_headers: boolean;
 
-	constructor({ wisp, wisp_v2, udp_extension_required }) {
+	constructor({ wisp, wisp_v2, udp_extension_required, title_case_headers }) {
 		this.wisp = wisp;
 		this.wisp_v2 = wisp_v2 || false;
 		this.udp_extension_required = udp_extension_required || false;
+		this.title_case_headers = title_case_headers || true;
 	}
 	async init() {
 		await initEpoxy();
@@ -25,6 +27,7 @@ export default class EpoxyTransport implements BareTransport {
 		options.user_agent = navigator.userAgent;
 		options.udp_extension_required = this.udp_extension_required;
 		options.wisp_v2 = this.wisp_v2;
+		options.title_case_headers = this.title_case_headers;
 		this.client = new EpoxyClient(this.wisp, options);
 
 		this.ready = true;
