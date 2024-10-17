@@ -1,37 +1,64 @@
 import type { BareHeaders, TransferrableResponse, BareTransport } from "@mercuryworkshop/bare-mux";
-import initEpoxy, { EpoxyClient, EpoxyClientOptions, EpoxyHandlers, info } from "@mercuryworkshop/epoxy-tls";
+import initEpoxy, { EpoxyClient, EpoxyClientOptions, EpoxyHandlers, info as epoxyInfo } from "@mercuryworkshop/epoxy-tls";
 
-export { info as epoxyInfo };
+export { epoxyInfo };
+
+export type EpoxyOptions = {
+	wisp_v2?: boolean,
+	udp_extension_required?: boolean,
+
+	title_case_headers?: boolean,
+	ws_title_case_headers?: boolean,
+
+	wisp_ws_protocols?: string[],
+
+	redirect_limit?: number,
+	header_limit?: number,
+	buffer_size?: number,
+}
+const opts = [
+	"wisp_v2",
+	"udp_extension_required",
+	"title_case_headers",
+	"ws_title_case_headers",
+	"wisp_ws_protocols",
+	"redirect_limit",
+	"header_limit",
+	"buffer_size"
+];
 
 export default class EpoxyTransport implements BareTransport {
 	canstart = true;
 	ready = false;
 
+	client_version: typeof epoxyInfo;
 	client: EpoxyClient = null!;
-
 	wisp: string;
-	wisp_v2: boolean;
-	udp_extension_required: boolean;
-	title_case_headers: boolean;
+	opts: EpoxyOptions;
 
-	constructor({ wisp, wisp_v2, udp_extension_required, title_case_headers }) {
-		this.wisp = wisp;
-		this.wisp_v2 = wisp_v2 || false;
-		this.udp_extension_required = udp_extension_required || false;
-		this.title_case_headers = title_case_headers || true;
+	constructor(opts: EpoxyOptions & { wisp: string }) {
+		this.wisp = opts.wisp;
+		this.opts = opts;
+
+		this.client_version = epoxyInfo;
 	}
+
+	setopt(opts: EpoxyClientOptions, opt: string) {
+		// == allows both null and undefined
+		if (this.opts[opt] != null) opts[opt] = this.opts[opt];
+	}
+
 	async init() {
 		await initEpoxy();
 
 		let options = new EpoxyClientOptions();
 		options.user_agent = navigator.userAgent;
-		options.udp_extension_required = this.udp_extension_required;
-		options.wisp_v2 = this.wisp_v2;
-		options.title_case_headers = this.title_case_headers;
+		opts.forEach(x => this.setopt(options, x))
 		this.client = new EpoxyClient(this.wisp, options);
 
 		this.ready = true;
 	}
+
 	async meta() { }
 
 	async request(
@@ -74,6 +101,7 @@ export default class EpoxyTransport implements BareTransport {
 			onerror,
 			(data: Uint8Array | string) => data instanceof Uint8Array ? onmessage(data.buffer) : onmessage(data)
 		);
+
 		let ws = this.client.connect_websocket(
 			handlers,
 			url.href,
