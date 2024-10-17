@@ -87,7 +87,6 @@ export default class EpoxyTransport implements BareTransport {
 
 	connect(
 		url: URL,
-		origin: string,
 		protocols: string[],
 		requestHeaders: BareHeaders,
 		onopen: (protocol: string) => void,
@@ -106,7 +105,7 @@ export default class EpoxyTransport implements BareTransport {
 			handlers,
 			url.href,
 			protocols,
-			Object.assign({ "Origin": origin }, requestHeaders)
+			Object.assign(requestHeaders)
 		);
 
 		return [
