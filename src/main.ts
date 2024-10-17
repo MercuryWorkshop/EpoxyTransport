@@ -111,6 +111,7 @@ export default class EpoxyTransport implements BareTransport {
 
 		return [
 			async (data) => {
+				if (data instanceof Blob) data = await data.arrayBuffer();
 				(await ws).send(data);
 			},
 			async (code, reason) => {
