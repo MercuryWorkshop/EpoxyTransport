@@ -9,12 +9,12 @@ importers:
   .:
     dependencies:
       '@mercuryworkshop/epoxy-tls':
-        specifier: 2.1.13-1
-        version: 2.1.13-1
+        specifier: 2.1.14-1
+        version: 2.1.14-1
     devDependencies:
       '@mercuryworkshop/bare-mux':
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^2.1.6
+        version: 2.1.6
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -171,11 +171,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@mercuryworkshop/bare-mux@2.1.4':
-    resolution: {integrity: sha512-Oir53uCI3Z/Mtwt6gqavKuufvkLs0lq/2AMGCDqrJ8OADaO7NkiA1LJ/0lJ3WXS2olg6cOBm3OcOvLKrjT39yg==}
+  '@mercuryworkshop/bare-mux@2.1.6':
+    resolution: {integrity: sha512-SMpPwHrRjeqBfuh5N9SKD2G7uzfQiOeiENcYjb0BYTpOEOFvoPDhjSppSZMSkN1maJJ1NNtCRv9Qb+uCeJWwgw==}
 
-  '@mercuryworkshop/epoxy-tls@2.1.13-1':
-    resolution: {integrity: sha512-vYOMX0rts+f2CFwB2KgcXphkVBP9gJpaa1k9H/CHtshzeTnxZO43O1fj2NSf/hkKCVGEIUYjQVCZjUiKGySs7A==}
+  '@mercuryworkshop/epoxy-tls@2.1.14-1':
+    resolution: {integrity: sha512-JbFGlbBnJM9++2duCsttWxd8ax3JdqN2rNR4Gibvkyi0nZkRQSURplS/GxSF6F7b8PsrNEwndtq0Z1JlDuRDqQ==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -356,9 +356,9 @@ snapshots:
   '@esbuild/win32-x64@0.24.0':
     optional: true
 
-  '@mercuryworkshop/bare-mux@2.1.4': {}
+  '@mercuryworkshop/bare-mux@2.1.6': {}
 
-  '@mercuryworkshop/epoxy-tls@2.1.13-1': {}
+  '@mercuryworkshop/epoxy-tls@2.1.14-1': {}
 
   ansi-regex@5.0.1: {}
 
