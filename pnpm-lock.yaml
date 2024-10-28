@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mercuryworkshop/epoxy-tls':
-        specifier: 2.1.14-1
-        version: 2.1.14-1
+        specifier: 2.1.15-1
+        version: 2.1.15-1
     devDependencies:
       '@mercuryworkshop/bare-mux':
         specifier: ^2.1.6
@@ -174,8 +174,8 @@ packages:
   '@mercuryworkshop/bare-mux@2.1.6':
     resolution: {integrity: sha512-SMpPwHrRjeqBfuh5N9SKD2G7uzfQiOeiENcYjb0BYTpOEOFvoPDhjSppSZMSkN1maJJ1NNtCRv9Qb+uCeJWwgw==}
 
-  '@mercuryworkshop/epoxy-tls@2.1.14-1':
-    resolution: {integrity: sha512-JbFGlbBnJM9++2duCsttWxd8ax3JdqN2rNR4Gibvkyi0nZkRQSURplS/GxSF6F7b8PsrNEwndtq0Z1JlDuRDqQ==}
+  '@mercuryworkshop/epoxy-tls@2.1.15-1':
+    resolution: {integrity: sha512-XcagLkLBIi+rjgr4WcI37m5EJ+FZbURDusnBvphtpQbcSVs5D/FwzUgVBLw92U6+Uragt0HC9POZ2UWmYkt0aA==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -358,7 +358,7 @@ snapshots:
 
   '@mercuryworkshop/bare-mux@2.1.6': {}
 
-  '@mercuryworkshop/epoxy-tls@2.1.14-1': {}
+  '@mercuryworkshop/epoxy-tls@2.1.15-1': {}
 
   ansi-regex@5.0.1: {}
 
