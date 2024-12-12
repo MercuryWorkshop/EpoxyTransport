@@ -28,7 +28,6 @@ const opts = [
 ];
 
 export default class EpoxyTransport implements BareTransport {
-	canstart = true;
 	ready = false;
 
 	client_version: typeof epoxyInfo;
